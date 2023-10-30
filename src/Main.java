@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,14 +10,16 @@ public class Main {
         map.put("E", 2);
         map.put("F", 4);
         System.out.println(map);
-        Map<Integer, String> pam = new HashMap<>();
+        Map<Integer, List<String>> pam = new HashMap<>();
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            if (pam.containsKey(value)){
-                pam.put(value, pam.get(value) + key);
+            List<String> s = new ArrayList<>();
+            s.add(key);
+            if (pam.containsKey(value)) {
+                pam.get(value).add(key);
             } else {
-                pam.put(value, key);
+                pam.put(value, s);
             }
         }
         System.out.println(pam);
