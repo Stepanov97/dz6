@@ -11,11 +11,16 @@ public class Main {
         map.put("E", 2);
         map.put("F", 4);
         System.out.println(map);
-        Map<Integer, List<String>> pam =
-                map.entrySet()
-                        .stream()
-                        .collect(Collectors.groupingBy(Map.Entry::getValue, Collectors.mapping(Map.Entry::getKey, Collectors.toList())));
-
+        Map<Integer, String> pam = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+            if (pam.containsKey(value)){
+                pam.put(value, pam.get(value) + key);
+            } else {
+                pam.put(value, key);
+            }
+        }
         System.out.println(pam);
     }
 }
