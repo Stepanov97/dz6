@@ -14,11 +14,11 @@ public class Main {
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            List<String> s = new ArrayList<>();
-            s.add(key);
             if (pam.containsKey(value)) {
                 pam.get(value).add(key);
             } else {
+                List<String> s = new ArrayList<>();
+                s.add(key);
                 pam.put(value, s);
             }
         }
